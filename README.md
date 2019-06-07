@@ -18,4 +18,5 @@ This is a work in progress, if you find a mistake, please commit and send a pull
 
 ## License
 
-none, if you think a license is required please add
+Using APACHE license version 2.0 read the attached notice file for more info
+http://www.apache.org/licenses/LICENSE-2.0
