@@ -1,16 +1,16 @@
 
 # RUN NPM INSTALL BEFORE WORKING ON FILES
 # RUN NPM INSTALL BEFORE WORKING ON FILES
-
+#
 #  First Progressive Web App Learning 
 
-POC on PWA using provided google weather app
+POC on PWA using an existing basic google weather app
 
 
 ## Learning reqs:
 
-* create and add a web app manifest
-* provide an offline experienceby creating service worker
+* create and add a web app manifest.json
+* provide an offline experience by creating service worker
 * making app installable
 
 
@@ -18,6 +18,7 @@ POC on PWA using provided google weather app
 ## Feedback
 
 This is a work in progress, if you find a mistake, please commit and send a pull request
+
 
 
 ## License
