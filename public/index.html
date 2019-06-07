@@ -213,7 +213,21 @@
   <!-- CODELAB: Add the install script here -->
   <script>
     // CODELAB: Register service worker.
+    //check to see if there is a service worker
+    if('serviceWorker' in navigator){
+      //open up an event listener that will load service only after the page is loaded
+      window.addEventListener('load',function ()  {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration){
+          //executes when registeration is succesful
+          console.log('service worker registered with scope:', registration.scope);
+        }, function(err){
+          //execute on failed registration
+          console.log('registeration failed:', err);
 
+        }
+      });
+    });
+    }
   </script>
 
 </body>
