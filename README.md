@@ -1,3 +1,7 @@
+
+# RUN NPM INSTALL BEFORE WORKING ON FILES
+# RUN NPM INSTALL BEFORE WORKING ON FILES
+
 #  First Progressive Web App Learning 
 
 POC on PWA using provided google weather app
