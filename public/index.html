@@ -8,6 +8,9 @@
   <title>Weather PWA</title>
   <meta name="codelab" content="your-first-pwa-v3">
   <link rel="stylesheet" type="text/css" href="/styles/inline.css">
+  <link rel="stylesheet" type="text/css" href="/styles/offline-theme-slide.css">
+  <link rel="stylesheet" type="text/css" href="/styles/offline-language-english.css">
+
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
   <!-- CODELAB: Add link rel manifest -->
@@ -22,6 +25,8 @@
   <meta name="description" content="A sample weather app">
   <!-- CODELAB: Add meta theme-color -->
   <meta name="theme-color" content="#2F3BA2" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="/scripts/offline.js"></script>
 
 
 </head>
@@ -44,9 +49,8 @@
       <span class="icon add"></span>
     </button>
 
-    <div id="about" class="weather-card">
-    /b><br>
-      Get started at <a href="https://g.co/codelabs/pwa">https://g.co/codelabs/pwa</a>.
+    <div id="about" class="weather-card" >
+    
     </div>
 
     <div id="weather-template" class="weather-card" hidden>
@@ -205,10 +209,36 @@
           });
     });
   }
+var msgsw;
+  function send_message_to_sw(msg){
+      return new Promise(function(resolve, reject){
+          // Create a Message Channel
+          var msg_chan = new MessageChannel();
 
+          // Handler for recieving message reply from service worker
+          msg_chan.port1.onmessage = function(event){
+              if(event.data.error){
+                  reject(event.data.error);
+              }else{
+                msgsw = event.data;
+                  resolve(event.data);
+              }
+          };
+
+          // Send message to service worker along with port for reply
+          navigator.serviceWorker.controller.postMessage("Client 1 says '"+msg+"'", [msg_chan.port2]);
+      });
+  }
+  if (navigator.onLine || msgsw === "something"  ) {
+  console.log('online');
+} else {
+  $('.remove-city').hide();
+  $('.fab').hide();
+
+}
 
   window.applicationCache.addEventListener("error", function(error) {
-    alert("Error fetching manifest: a good chance we are offline");
+    alert("Error fetching manifest, we are offline");
   });
 
 </script>

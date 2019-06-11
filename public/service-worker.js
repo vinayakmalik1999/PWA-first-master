@@ -10,9 +10,12 @@ const FILES_TO_CACHE = [
   '/',
   '/index.html',
   '/scripts/app.js',
+  '/scripts/offline.js',
   '/scripts/install.js',
   '/scripts/luxon-1.11.4.js',
   '/styles/inline.css',
+  '/styles/offline-theme-slide.css',
+  '/styles/offline-language-english.css',
   '/images/add.svg',
   '/images/clear-day.svg',
   '/images/clear-night.svg',
@@ -88,10 +91,14 @@ self.addEventListener('fetch', (evt) => {
         return cache.match(evt.request)
             .then((response) => {
               return response || fetch(evt.request)
-          
+
             });
       })
   );
+  self.addEventListener('message', function(event){
+    console.log("SW Received Message: " + event.data);
+    event.ports[0].postMessage("SW Says 'Hello back!");
+  });
 
 
 
