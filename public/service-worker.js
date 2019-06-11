@@ -1,8 +1,5 @@
 'use strict';
-var script = document.createElement('script');
 
-script.src = '//code.jquery.com/jquery-1.11.0.min.js';
-document.getElementsByTagName('head')[0].appendChild(script); 
 
 // CODELAB: Update cache names any time any of the cached files change.
 const CACHE_NAME = 'static-cache-v3';
@@ -91,18 +88,7 @@ self.addEventListener('fetch', (evt) => {
         return cache.match(evt.request)
             .then((response) => {
               return response || fetch(evt.request)
-              .then((response) => {
-                var f =  function(){
-                        $(document).ready(function(){
-                          if(!navigator.onLine){
-                              $(".remove-city").hide();
-                          }
-
-
-                      });
-                    }
-                f();
-              })
+          
             });
       })
   );
