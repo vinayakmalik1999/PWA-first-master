@@ -1,4 +1,8 @@
 'use strict';
+var script = document.createElement('script');
+
+script.src = '//code.jquery.com/jquery-1.11.0.min.js';
+document.getElementsByTagName('head')[0].appendChild(script); 
 
 // CODELAB: Update cache names any time any of the cached files change.
 const CACHE_NAME = 'static-cache-v3';
@@ -29,7 +33,7 @@ const FILES_TO_CACHE = [
   '/images/tornado.svg',
   '/images/wind.svg',
   '/manifest.json',
-  
+
 ];
 
 self.addEventListener('install', (evt) => {
@@ -86,10 +90,26 @@ self.addEventListener('fetch', (evt) => {
       caches.open(CACHE_NAME).then((cache) => {
         return cache.match(evt.request)
             .then((response) => {
-              return response || fetch(evt.request);
+              return response || fetch(evt.request)
+              .then((response) => {
+                var f =  function(){
+                        $(document).ready(function(){
+                          if(!navigator.onLine){
+                              $(".remove-city").hide();
+                          }
+
+
+                      });
+                    }
+                f();
+              })
             });
       })
   );
+
+
+
+
 /*  self.addEventListener('fetch', function(event) {
   console.log('Fetch' ,event);
 
