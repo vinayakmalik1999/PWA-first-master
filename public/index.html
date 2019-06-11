@@ -44,7 +44,10 @@
       <span class="icon add"></span>
     </button>
 
-    z
+    <div id="about" class="weather-card">
+    /b><br>
+      Get started at <a href="https://g.co/codelabs/pwa">https://g.co/codelabs/pwa</a>.
+    </div>
 
     <div id="weather-template" class="weather-card" hidden>
       <div class="card-spinner">
@@ -187,6 +190,8 @@
       </div>
     </div>
   </div>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
   <script src="/scripts/luxon-1.11.4.js"></script>
   <script src="/scripts/app.js"></script>
@@ -201,7 +206,18 @@
           });
     });
   }
-  </script>
+  $(document).ready(function(){
 
+    if(navigator.onLine){
+        $(".remove-city").hide();
+    }
+      window.addEventListener("document.ononline",function(){
+        alert("runs");
+        $(".remove-city").hide();
+      });
+
+});
+
+</script>
 </body>
 </html>
