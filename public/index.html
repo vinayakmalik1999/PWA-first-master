@@ -50,7 +50,7 @@
     </button>
 
     <div id="about" class="weather-card" >
-    
+
     </div>
 
     <div id="weather-template" class="weather-card" hidden>
@@ -229,7 +229,7 @@ var msgsw;
           navigator.serviceWorker.controller.postMessage("Client 1 says '"+msg+"'", [msg_chan.port2]);
       });
   }
-  if (navigator.onLine || msgsw === "something"  ) {
+  if (navigator.onLine || msgsw === "text to see if message from SW comes through channel thus site is offline  "  ) {
   console.log('online');
 } else {
   $('.remove-city').hide();
